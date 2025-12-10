@@ -1,0 +1,257 @@
+/* General Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #1a1a1a; /* Just for contrast to see the header */
+}
+
+/* --- Main Navbar Styles from Figma --- */
+.navbar {
+    width: 100%;
+    /* Figma: background: #2B0814; */
+    background-color: #2B0814;
+    display: flex;
+    justify-content: center; /* Centers the inner container */
+}
+
+.nav-container {
+    /* Figma: width: 1440px; padding: 15px 0px; height: 65px; */
+    width: 100%;
+    max-width: 1440px; 
+    height: 65px; /* Note: Total height including padding will be larger unless calculated carefully. Here we let flex handle alignment */
+    padding: 15px 20px; /* Added side padding to prevent content touching edges on smaller screens */
+    
+    /* Layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; /* Pushes Logo left and Menu right */
+    align-items: center;
+    
+    /* If you strictly want the Figma "gap" approach instead of space-between:
+       justify-content: center;
+       gap: 365px; 
+    */
+}
+
+/* --- Logo Section --- */
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+/* Creating the Red Icon shapes using CSS */
+.logo-icon {
+    display: flex;
+    align-items: center;
+    height: 32px;
+}
+.arrow-left, .arrow-right {
+    width: 12px;
+    height: 20px;
+    border: 3px solid #D63031; /* Red color */
+    border-radius: 2px;
+}
+.arrow-left {
+    border-right: 0;
+    transform: skewY(20deg);
+}
+.arrow-right {
+    border-left: 0;
+    transform: skewY(-20deg);
+    margin-left: -4px;
+}
+
+.logo-text-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1;
+}
+
+.logo-main {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.5px;
+}
+
+.logo-main .highlight {
+    color: #ffffff; /* .ai part */
+}
+
+.logo-sub {
+    color: #b0b0b0;
+    font-size: 10px;
+    margin-top: 2px;
+    font-weight: 400;
+}
+
+/* --- Right Navigation Area --- */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Spacing between links and buttons */
+}
+
+.nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+}
+.nav-link:hover {
+    opacity: 0.8;
+}
+
+/* Buttons */
+.btn {
+    text-decoration: none;
+    padding: 8px 24px;
+    border-radius: 50px; /* Pill shape */
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+/* Log In Button */
+.btn-login {
+    background: transparent;
+    color: #1CA568; /* Green text */
+    border: 1px solid #1CA568; /* Green border */
+}
+.btn-login:hover {
+    background: rgba(28, 165, 104, 0.1);
+}
+
+/* Get Started Button */
+.btn-signup {
+    background-color: #1CA568; /* Green background */
+    color: #ffffff;
+    border: 1px solid #1CA568;
+}
+.btn-signup:hover {
+    background-color: #158f58;
+}
+/* --- Hero Section --- */
+
+.hero-section {
+    width: 100%;
+    /* Figma: background: #FCF1F1; */
+    background-color: #FCF1F1;
+    
+    /* Center the internal container */
+    display: flex;
+    justify-content: center;
+    overflow: hidden; /* Ensures the side graphic doesn't cause horizontal scrollbar */
+    position: relative;
+}
+
+.hero-container {
+    /* Figma: width: 1440px; height: 570px; */
+    width: 100%;
+    max-width: 1440px;
+    height: 570px;
+    
+    /* Figma: padding: 40px 0px; */
+    padding: 40px 20px; /* Added 20px side padding for mobile safety */
+    
+    /* Figma Layout Specs */
+    display: flex;
+    flex-direction: row; /* Changed to row to put text on left, image on right */
+    align-items: center; /* Vertically center content */
+    position: relative;
+}
+
+/* --- Left Side Content (Implicit in design) --- */
+.hero-content {
+    flex: 1;
+    z-index: 10; /* Ensures text stays on top of the background ripples */
+    max-width: 50%; /* Keeps text from overlapping the image too much */
+}
+
+/* Typography placeholders (Adjust to match your specific font styles) */
+.hero-content h1 {
+    font-size: 48px;
+    color: #2B0814;
+    font-weight: 700;
+    margin-bottom: 16px;
+    line-height: 1.2;
+}
+.hero-content p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 24px;
+}
+
+/* --- Right Side: Mask Group / Graphic --- */
+
+.hero-graphic-container {
+    /* Figma: position: absolute; width: 1008.39px; left: 791px; */
+    position: absolute;
+    
+    /* We use percentage or 'right' for better responsiveness than fixed 'left: 791px' */
+    right: -100px; 
+    top: 0;
+    height: 100%;
+    width: 60%; /* Approximate visual width */
+    
+    /* Flex to center the image inside this absolute container */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 7; /* From Figma code */
+}
+
+/* The actual image asset */
+.hero-image-asset {
+    position: relative;
+    z-index: 2;
+    max-height: 90%;
+    width: auto;
+    object-fit: contain;
+}
+
+/* --- Decorative Ripples (Mimicking the background circles) --- */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(214, 48, 49, 0.03); /* Faint red/pink */
+    border: 1px solid rgba(214, 48, 49, 0.05);
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.r-1 { width: 400px; height: 400px; }
+.r-2 { width: 600px; height: 600px; }
+.r-3 { width: 800px; height: 800px; }
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1024px) {
+    .hero-container {
+        height: auto;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .hero-content {
+        max-width: 100%;
+        margin-bottom: 40px;
+    }
+
+    .hero-graphic-container {
+        position: relative;
+        right: auto;
+        width: 100%;
+        height: 400px;
+        overflow: hidden;
+    }
+}

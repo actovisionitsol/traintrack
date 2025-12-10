@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@layer utilities {
+  .strike-through {
+    text-decoration: line-through;
+  }
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  @apply bg-slate-50 text-slate-900;
+}
+
+/* Custom Scrollbar for JSON viewer */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-slate-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 rounded-full;
+}
+
+/* Radar Pulse Animation */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.33);
+  }
+
+  80%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-dot {
+  0% {
+    transform: scale(0.8);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0.8);
+  }
+}
+
+.train-marker-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+.train-marker-ring {
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: rgba(99, 102, 241, 0.4);
+  /* Indigo-500 with opacity */
+  animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+.train-marker-dot {
+  position: relative;
+  background-color: #4f46e5;
+  /* Indigo-600 */
+  border-radius: 50%;
+  height: 12px;
+  width: 12px;
+  box-shadow: 0 0 0 2px white;
+  animation: pulse-dot 1.25s cubic-bezier(0.455, 0.03, 0.515, 0.955) -0.4s infinite;
+}
+
+.train-icon-wrapper {
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 4px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e2e8f0;
+  z-index: 10;
+  white-space: nowrap;
+  font-size: 16px;
+}
+
+/* Timeline Animation */
+@keyframes trainMove {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 0 20px;
+  }
+}
+
+.timeline-line-animated {
+  background: linear-gradient(180deg, #4caf50 0%, #4caf50 50%, #2e7d32 50%, #2e7d32 100%);
+  background-size: 100% 20px;
+  animation: trainMove 1s linear infinite;
+}
