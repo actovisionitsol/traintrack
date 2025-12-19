@@ -10,6 +10,8 @@ router.get('/coach-composition', authenticateToken, trainController.getCoachComp
 console.log("Registering /delay-analysis route");
 router.get('/delay-analysis', authenticateToken, trainController.getDelayAnalysis);
 router.get('/live-status', authenticateToken, trainController.getLiveTrainStatus);
+router.get('/seat-availability', authenticateToken, trainController.getSeatAvailability);
+router.get('/live-station', authenticateToken, trainController.getLiveStation);
 router.get('/train-suggestions', authenticateToken, trainController.getTrainSuggestions);
 
 module.exports = router;
